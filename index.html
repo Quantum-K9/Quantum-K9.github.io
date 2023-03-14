@@ -15,9 +15,26 @@
 
 		<p id="RESPONSE"></p>
 
+		<br><br><br>
+		<p id="DEBUG"> </p>
+
 		<script>
+
+			function transform( i ){
+				return "goose" + i;
+			}
+
 			function myFunction() {
-  				document.getElementById("RESPONSE").innerHTML = "Try this instead: " + document.getElementById("INPUT").value;
+				var line = document.getElementById("INPUT").value;
+				var sline = line.split(' ');
+
+				var OUTPUT = "";
+				for ( var i in sline ){
+					OUTPUT += transform(sline[i]) + " ";
+				}
+
+  				document.getElementById("RESPONSE").innerHTML = "Try this instead: " + OUTPUT;
+
 			}
 		</script>
 
