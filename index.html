@@ -4,24 +4,37 @@
 
 	<body>
 		
-		<h1>katweena translator v.1.0</h1>
-		<p>Hosted via GitHub Pages</p>
+		<h1>katweena translator v.1.2</h1>
+		<p>hosted via GitHub Pages</p>
 
 		<br><br>
 
-		Enter a word, phrase, or sentence:
-		<input type="text" id="INPUT"> <br><br>
+		enter a word, phrase, or sentence:
+		<input type="text" id="INPUT"> <br>
+		<i> please type in all lowercase because i do not know what a capital letter is </i> <br> <br>
 		<button onclick="myFunction()">Translate!</button>
 
-		<p id="RESPONSE"></p>
+		<b> <p id="RESPONSE"></p> <b>
 
 		<br><br><br>
 		<p id="DEBUG"> </p>
 
 		<script>
 
-			function transform( i ){
-				return "goose" + i;
+			function transform(i){
+
+				// names
+				if( i == "katrina" ){ return "katweena"; }
+				else if ( i == "harmonie" ){ return "hamoni"; }
+				else if ( i == "daphne" ){ return "dapknee"; }
+
+				// whole words
+				else if ( i == "is" ){ return "iz"; }
+				else if ( i == "am" ){ return "is"; }
+				else if ( i == "i" ){ return "me"; }
+				else if ( i == "na" ){ return "naw"; }
+
+				return i;
 			}
 
 			function myFunction() {
@@ -33,7 +46,7 @@
 					OUTPUT += transform(sline[i]) + " ";
 				}
 
-  				document.getElementById("RESPONSE").innerHTML = "Try this instead: " + OUTPUT;
+  				document.getElementById("RESPONSE").innerHTML = "try this instead: " + OUTPUT + " HEE HEE";
 
 			}
 		</script>
