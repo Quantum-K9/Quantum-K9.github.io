@@ -2,6 +2,10 @@
 
 <html>
 
+	<head>
+		<meta charset="UTF-8">
+	</head>
+
 	<body>
 		
 		<h1>katweena translator v.1.2</h1>
@@ -39,14 +43,44 @@
 
 			function myFunction() {
 				var line = document.getElementById("INPUT").value;
-				var sline = line.split(' ');
+				var line_split = line.split(' ');
 
+				var i = 0;
 				var OUTPUT = "";
-				for ( var i in sline ){
-					OUTPUT += transform(sline[i]) + " ";
+				
+				// the dumbest NLP of all time
+				while ( i < line_split.length ){ // iterate through all words
+
+					// special case -- (verb)ing
+					if( i+2 < line_split.length ){
+
+						if( line_split[i+1] == "am" || line_split[i+1] == "is"){
+
+							if( line_split[i+2].length > 3 ){
+
+								if( line_split[i+2].slice( line_split[i+2].length - 3 ) == "ing" ){
+									OUTPUT += transform( line_split[i] ) + " ";
+									OUTPUT += transform( line_split[i+1] ) + " ";
+									OUTPUT += line_split[i+2].slice(0, line_split[i+2].length - 3 ) + " ";
+									OUTPUT += "childt "
+									i += 3;
+									continue;
+								}
+							}
+						}
+					}
+
+					// base case
+					OUTPUT += transform(line_split[i]) + " ";
+					i += 1;
 				}
 
-  				document.getElementById("RESPONSE").innerHTML = "try this instead: " + OUTPUT + " HEE HEE";
+				var dulo = [ "HEE HEE", "🏃🏃🏃", "🐀🐀🐀", "👻👻👻", "👁️👄👁️"];
+
+				var dulo_ind = Math.max( Math.floor( (Math.random()-0.001) * dulo.length ) , 0 );
+
+				OUTPUT += dulo[ ( Math.floor( Math.random() * dulo.length ) ) ];
+  				document.getElementById("RESPONSE").innerHTML = "try this instead: " + OUTPUT;
 
 			}
 		</script>
